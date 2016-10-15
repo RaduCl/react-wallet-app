@@ -1,8 +1,31 @@
 import React, { Component } from 'react';
 import './App.css';
-// import minusIcon from './minus.svg';
+import Transaction from './Transaction';
 
 class App extends Component {
+
+  constructor(props){
+    super(props)
+    this.state = {
+      transactions: [
+        {
+          amount: 111,
+          type: 'deposit',
+          date: 'Sat Oct 11 2016 15:11:37 GMT+0300 (EEST)'
+        },
+        {
+          amount: 222,
+          type: 'withdraw',
+          date: 'Sat Oct 15 2016 23:11:37 GMT+0300 (EEST)',
+        }
+      ],
+    }
+  }
+
+  transactions(transactions) {
+    return transactions.map(transaction => <Transaction transaction={transaction} />)
+  }
+
   render() {
     return (
       <div className="App">
@@ -29,17 +52,7 @@ class App extends Component {
             </div>
 
             <div className="wallet-entries" >
-              <div className="transaction-entry" >
-                <div className="transaction-icon-retrieve" ></div>
-                <span>$ 250</span>
-                <span>25 Sep 2016 15:04</span>
-              </div>
-
-              <div className="transaction-entry" >
-                <div className="transaction-icon-add" ></div>
-                <span>$ 500</span>
-                <span>22 Sep 2016 17:54</span>
-              </div>
+              {this.transactions(this.state.transactions)}
             </div>
           </div>
 

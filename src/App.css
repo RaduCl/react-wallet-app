@@ -58,14 +58,14 @@ nav a:hover {
   margin: 15px 0;
 }
 
-.transaction-icon-retrieve {
+.transaction-icon-withdraw {
   width: 20px;
   height: 20px;
   background-image: url("/minus.svg");
   background-repeat: round;
 }
 
-.transaction-icon-add {
+.transaction-icon-deposit {
   width: 20px;
   height: 20px;
   background-image: url("/plus.svg");
