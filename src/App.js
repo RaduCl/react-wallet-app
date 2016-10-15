@@ -7,8 +7,12 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <img className="logo" src="/wallet-logo.png"></img>
+          <nav>
+            <a href="/">HOME</a>
+            <a href="/">RESET WALLET</a>
+            <a href="/">SOURCE</a>
+          </nav>
         </div>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
