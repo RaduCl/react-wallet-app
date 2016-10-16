@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
+
 import Transaction from './components/Transaction';
 import ErrorMessage from './components/ErrorMessage';
 import TotalBalance from './components/TotalBalance'
+
+const LOCAL_STORAGE_KEY = 'walletAppState';
 
 class App extends Component {
 
@@ -18,36 +21,46 @@ class App extends Component {
       inputAmount: '',
 
       transactions: [
-        {
-          amount: 222,
-          type: 'deposit',
-          date: 'Sat Oct 11 2016 15:11:37 GMT+0300 (EEST)'
-        },
-        {
-          amount: 111,
-          type: 'withdraw',
-          date: 'Sat Oct 15 2016 23:11:37 GMT+0300 (EEST)',
-        }
       ],
 
       validationsErrors: '',
 
     }
+
   }
 
+  componentDidMount() {
+    // load state from local storage if available
+    if(this.state.transactions.length === 0
+      && localStorage[LOCAL_STORAGE_KEY] !== undefined) {
+      this.setState( JSON.parse(localStorage[LOCAL_STORAGE_KEY]) );
+    }
+  }
+
+  componentDidUpdate() {
+    // save state to local storage
+    localStorage[LOCAL_STORAGE_KEY] = JSON.stringify(this.state);
+  }
+
+  /**
+   * generates transaction nodes
+   */
   transactions(transactions) {
-    return transactions.map(transaction => <Transaction transaction={transaction} />)
+    return transactions.map((transaction, index) => <Transaction key={index} transaction={transaction} />)
   }
 
+  /**
+   * bind amount from input field to state object
+   */
   handleInputChange(e) {
-    console.log('amount', e.target.value);
-    this.setState({inputAmount: e.target.value});
+    this.setState({inputAmount: parseFloat(e.target.value)});
   }
 
+  /**
+   * create new item in the transactions array
+   */
   makeTransaction(e) {
     e.preventDefault();
-
-    // console.log('this.state.inputAmount', this.state.inputAmount)
 
     const newTransaction = {
       amount: parseFloat(this.state.inputAmount),
@@ -55,7 +68,7 @@ class App extends Component {
       date: String(new Date()),
     };
 
-    console.log("newTransaction", newTransaction);
+    // console.log("newTransaction", newTransaction);
 
     if(!this.isValidInput(this.state.inputAmount)) {
       this.setState({ validationsErrors: "Only positive numbers are alowed."})
@@ -75,18 +88,31 @@ class App extends Component {
 
   }
 
+  /**
+   * regex test for valid integer positive numbers
+   */
   isValidInput(input) {
     const regex = /^[+]?[1-9]\d*$/;
     return regex.test(input);
   }
 
+  /**
+   * Summs amounts of all transaction entries
+   */
   makeTotalBalance() {
     return this.state.transactions
-      // .map(x => x.amount)
       .reduce((acc, x) =>
         x.type === 'deposit'
         ? acc + x.amount
         : acc - x.amount, 0)
+  }
+
+  /**
+   * remove app state key from localStorage
+   */
+  resetWallet(e) {
+    e.preventDefault();
+    localStorage.removeItem(LOCAL_STORAGE_KEY);
   }
 
   render() {
@@ -97,7 +123,10 @@ class App extends Component {
           <img className="logo" src="/wallet-logo.png"></img>
           <nav>
             <a href="/">HOME</a>
-            <a href="/">RESET WALLET</a>
+            <a
+              href="/"
+              onClick={this.resetWallet}
+            >RESET WALLET</a>
             <a href="https://github.com/RaduCl/react-wallet-app" target="blank">SOURCE</a>
           </nav>
         </div>

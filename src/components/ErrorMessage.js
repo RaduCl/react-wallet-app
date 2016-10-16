@@ -1,8 +1,8 @@
-import React, { PropTypes } from 'react';
+import React  from 'react';
 
-const ErrorMessage = ({message}) => {
-    console.log('message', message);
-  return message !== '' ? <div className="alert">{message}</div> : null
-}
+const ErrorMessage = ({message}) =>
+    message !== ''
+    ? <div className="alert">{message}</div>
+    : null
 
 export default ErrorMessage;
