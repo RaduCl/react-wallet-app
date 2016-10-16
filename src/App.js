@@ -15,6 +15,7 @@ class App extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.makeTransaction = this.makeTransaction.bind(this);
     this.makeTotalBalance = this.makeTotalBalance.bind(this);
+    this.resetWallet = this.resetWallet.bind(this);
 
     this.state = {
 
@@ -53,7 +54,7 @@ class App extends Component {
    * bind amount from input field to state object
    */
   handleInputChange(e) {
-    this.setState({inputAmount: parseFloat(e.target.value)});
+    this.setState({inputAmount: e.target.value});
   }
 
   /**
@@ -113,6 +114,7 @@ class App extends Component {
   resetWallet(e) {
     e.preventDefault();
     localStorage.removeItem(LOCAL_STORAGE_KEY);
+    this.setState({ transactions: []})
   }
 
   render() {
