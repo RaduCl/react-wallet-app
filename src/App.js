@@ -140,7 +140,6 @@ class App extends Component {
             <TotalBalance balance={this.makeTotalBalance()} />
 
             <form className="wallet-controls">
-
               <input
                 value={this.state.inputAmount}
                 onChange={this.handleInputChange}
