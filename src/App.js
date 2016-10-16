@@ -121,7 +121,7 @@ class App extends Component {
     return (
       <div className="App">
 
-        <div className="App-header">
+        <div className="App-header shadows">
           <img className="logo" src="/wallet-logo.png"></img>
           <nav>
             <a href="/">HOME</a>
@@ -135,16 +135,11 @@ class App extends Component {
 
         <div className="app-container" >
 
-          <div className="app-body" >
+          <div className="app-body shadows" >
 
             <TotalBalance balance={this.makeTotalBalance()} />
 
             <form className="wallet-controls">
-              <button
-                type="submit"
-                onClick={this.makeTransaction}
-                value="deposit"
-              >Deposit</button>
 
               <input
                 value={this.state.inputAmount}
@@ -152,6 +147,12 @@ class App extends Component {
                 type="text"
                 placeholder="Enter amount here"
               ></input>
+
+              <button
+                type="submit"
+                onClick={this.makeTransaction}
+                value="deposit"
+              >Deposit</button>
 
               <button
                 type="submit"

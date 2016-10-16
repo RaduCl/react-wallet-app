@@ -1,5 +1,6 @@
 .App {
-  color: #7b7b7b;  
+  /*color: #7b7b7b;*/
+  color: #fff;
 }
 
 .App-header {
@@ -45,8 +46,39 @@ nav a:hover {
   margin: 50px 0;
 }
 
+.app-body {
+  width: 500px;
+  background: #1a99dc;
+  padding: 20px;
+}
+
+.wallet-controls input {
+  padding: 5px;
+  margin: 7px;
+}
+
+.wallet-controls button {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 70px;
+  padding: 6px;
+  overflow: hidden;
+  border: none;
+  font: normal 16px/1 Arial, Helvetica, sans-serif;
+  color: rgba(255,255,255,1);
+  text-align: center;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  background: #01d926;
+  -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+  box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+  border: 1px solid #1b88c1;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
 .wallet-entries {
-  /*width: 50%;*/
   margin-top: 50px;
 }
 
@@ -63,6 +95,8 @@ nav a:hover {
   height: 20px;
   background-image: url("/minus.svg");
   background-repeat: round;
+  background-color: white;
+  border-radius: 50%;
 }
 
 .transaction-icon-deposit {
@@ -70,6 +104,8 @@ nav a:hover {
   height: 20px;
   background-image: url("/plus.svg");
   background-repeat: round;
+  background-color: white;
+  border-radius: 50%;
 }
 
 .alert {
@@ -78,6 +114,15 @@ nav a:hover {
   background-color: #ffc1c1;
   border: 1px solid red;
 }
+
+/** Reusable classes */
+.shadows {
+  -webkit-box-shadow: 5px 8px 26px -9px rgba(0,0,0,0.75);
+  -moz-box-shadow: 5px 8px 26px -9px rgba(0,0,0,0.75);
+  box-shadow: 5px 8px 26px -9px rgba(0,0,0,0.75);
+}
+
+/*MEDIA QUERIES*/
 
 @media screen and (max-width: 560px) {
   nav {
@@ -88,5 +133,9 @@ nav a:hover {
 
   nav a {
     padding: 9px;
+  }
+
+  .app-body {
+    width: 80%;
   }
 }
