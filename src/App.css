@@ -72,6 +72,12 @@ nav a:hover {
   background-repeat: round;
 }
 
+.alert {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #ffc1c1;
+  border: 1px solid red;
+}
 
 @media screen and (max-width: 560px) {
   nav {

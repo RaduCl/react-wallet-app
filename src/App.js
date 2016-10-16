@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Transaction from './Transaction';
+import Transaction from './components/Transaction';
+import ErrorMessage from './components/ErrorMessage';
 
 class App extends Component {
 
@@ -11,7 +12,9 @@ class App extends Component {
     this.makeTransaction = this.makeTransaction.bind(this);
 
     this.state = {
+
       inputAmount: '',
+
       transactions: [
         {
           amount: 111,
@@ -24,6 +27,9 @@ class App extends Component {
           date: 'Sat Oct 15 2016 23:11:37 GMT+0300 (EEST)',
         }
       ],
+
+      validationsErrors: '',
+
     }
   }
 
@@ -39,23 +45,32 @@ class App extends Component {
   makeTransaction(e) {
     e.preventDefault();
 
-    console.log('this.state.inputAmount', this.state.inputAmount)
-    
+    // console.log('this.state.inputAmount', this.state.inputAmount)
+
     const newTransaction = {
       amount: this.state.inputAmount,
       type: e.target.value,
       date: String(new Date()),
     };
 
-    console.log("newTransaction", newTransaction);
-    this.setState({ 
-      transactions: this.state.transactions.concat(newTransaction),
-      inputAmount: ''
-    })
+    // console.log("newTransaction", newTransaction);
+
+    if(this.isValidInput(this.state.inputAmount)) {
+      console.log('valid')
+      this.setState({ 
+        transactions: this.state.transactions.concat(newTransaction),
+        inputAmount: '',
+        validationsErrors: '',
+      })
+    } else {
+      console.log('invalid');
+      this.setState({ validationsErrors: "Invalid input, only number are alowed."})
+    }
   }
 
   isValidInput(input) {
-
+    const regex = /^[-+]?[1-9]\d*$/;
+    return regex.test(input);
   }
 
   render() {
@@ -74,6 +89,7 @@ class App extends Component {
         <div className="app-container" >
 
           <div className="app-body" >
+
             <form className="wallet-controls">
               <button
                 type="submit"
@@ -92,6 +108,8 @@ class App extends Component {
                 onClick={this.makeTransaction}
               >Withdraw</button>
             </form>
+
+            <ErrorMessage message={this.state.validationsErrors} />
 
             <div className="wallet-entries" >
               {this.transactions(this.state.transactions)}
