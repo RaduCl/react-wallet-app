@@ -52,9 +52,14 @@ nav a:hover {
   padding: 20px;
 }
 
+.wallet-controls {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .wallet-controls input {
   padding: 5px;
-  margin: 7px;
+  max-width: 25%;
 }
 
 .wallet-controls button {
@@ -113,6 +118,7 @@ nav a:hover {
   padding: 15px;
   background-color: #ffc1c1;
   border: 1px solid red;
+  color: red;
 }
 
 /** Reusable classes */
