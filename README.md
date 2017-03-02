@@ -1,3 +1,11 @@
+###Game Description###
+This a simple wallet app built with react.
+Validation against negative balance.
+Validation against non numerical input types.
+
+![alt img](http://res.cloudinary.com/des3crator/image/upload/v1488461501/preview_osmros.png)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.  
