@@ -1,4 +1,6 @@
-###Game Description###
+
+##Game Description
+
 >This a simple wallet app built with react.
 
 >Validation against negative balance.
