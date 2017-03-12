@@ -4,6 +4,8 @@
   "private": true,
   "devDependencies": {
     "eslint": "^3.8.0",
+    "now": "^4.7.1",
+    "now-serve": "^0.5.1",
     "react-scripts": "0.6.1"
   },
   "dependencies": {
@@ -13,6 +15,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "npm run build && ns build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }

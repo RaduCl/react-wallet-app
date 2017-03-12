@@ -1,18 +1,20 @@
 
-##Game Description
+##App Description
 
 >This a simple wallet app built with react.
 
 >Validation against negative balance.
 
-> Validation against non numerical input types.
+>Validation against non numerical input types.
+
+>App Demo available [here](https://ns-ygogyyndbu.now.sh/)
 
 ![alt img](http://res.cloudinary.com/des3crator/image/upload/v1488461501/preview_osmros.png)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-Below you will find some information on how to perform common tasks.  
+Below you will find some information on how to perform common tasks.
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
 ## Getting Started###
@@ -37,7 +39,7 @@ You will also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.  
+Launches the test runner in the interactive watch mode.
 See the section about [running tests](#running-tests) for more information.
 
 ### `npm run build`
@@ -47,6 +49,10 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
+
+### `npm run deploy`
+
+This command runs the build script and deploys to [zeit now](https://zeit.co/now) hosting solution
 
 ### `npm run eject`
 
